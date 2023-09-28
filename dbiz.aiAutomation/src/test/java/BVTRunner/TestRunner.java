@@ -6,8 +6,8 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-    features = "src/test/resources/UIfeature/HomePage.feature",
-    glue = {"stepdefinations"},
+    features = "src/test/resources/UI_features/HomePage.feature",
+    glue = {"UI_stepdefinitions"},
     		plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 
 
