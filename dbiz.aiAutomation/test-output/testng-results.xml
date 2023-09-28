@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-09-27T12:46:24 IST" name="Suite" finished-at="2023-09-27T12:47:00 IST" duration-ms="36447">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:BVTRunner.TestRunner@3ad83a66]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2023-09-27T12:46:24 IST" name="Test" finished-at="2023-09-27T12:47:00 IST" duration-ms="36447">
+      <class name="BVTRunner.TestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:BVTRunner.TestRunner@3ad83a66]" started-at="2023-09-27T12:46:24 IST" name="setUpClass" finished-at="2023-09-27T12:46:25 IST" duration-ms="1377" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@3093b9ff]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:BVTRunner.TestRunner@3ad83a66]" started-at="2023-09-27T12:46:25 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-09-27T12:46:38 IST" duration-ms="12398" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To validate Header in Dbiz.ai  Homepage"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Validating the Homepage"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:BVTRunner.TestRunner@3ad83a66]" started-at="2023-09-27T12:46:38 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-09-27T12:46:47 IST" duration-ms="8873" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To validate Industries Section in Dbiz.ai  Homepage"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Validating the Homepage"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:BVTRunner.TestRunner@3ad83a66]" started-at="2023-09-27T12:46:47 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-09-27T12:46:55 IST" duration-ms="8710" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To validate Offer Section in Dbiz.ai  Homepage"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Validating the Homepage"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:BVTRunner.TestRunner@3ad83a66]" started-at="2023-09-27T12:46:55 IST" name="tearDownClass" finished-at="2023-09-27T12:47:00 IST" duration-ms="4986" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- BVTRunner.TestRunner -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

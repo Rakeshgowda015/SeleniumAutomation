@@ -1,0 +1,38 @@
+[INFO ] 2023-09-27 12:46:27.229 [main] HomePageStepdefination - Browsing the Dbiz.ai URL
+[INFO ] 2023-09-27 12:46:32.370 [main] HomePage - Navigated to URL: https://uat.dbizsolution.com/
+[INFO ] 2023-09-27 12:46:37.373 [main] HomePage - Navigated to URL: https://uat.dbizsolution.com/
+[INFO ] 2023-09-27 12:46:37.406 [main] HomePageStepdefination - Verifying that I am on the Home page
+[INFO ] 2023-09-27 12:46:37.420 [main] HomePageStepdefination - Validating HomePage Header Navigation bar elements
+[INFO ] 2023-09-27 12:46:37.563 [main] HomePageStepdefination - Validating Bannerheading in homepage
+[INFO ] 2023-09-27 12:46:37.635 [main] HomePageStepdefination - Validating WelcomeText in homepage
+[INFO ] 2023-09-27 12:46:38.369 [main] HomePageStepdefination - Browsing the Dbiz.ai URL
+[INFO ] 2023-09-27 12:46:41.357 [main] HomePage - Navigated to URL: https://uat.dbizsolution.com/
+[INFO ] 2023-09-27 12:46:46.369 [main] HomePage - Navigated to URL: https://uat.dbizsolution.com/
+[INFO ] 2023-09-27 12:46:46.369 [main] HomePageStepdefination - Verifying that I am on the Home page
+[INFO ] 2023-09-27 12:46:46.381 [main] HomePageStepdefination - Validating HomePage Header Navigation bar elements
+[INFO ] 2023-09-27 12:46:46.496 [main] HomePageStepdefination - Validating Industries Section in homepage
+[INFO ] 2023-09-27 12:46:46.496 [main] HomePageStepdefination - Validating industry: FINTECH
+[INFO ] 2023-09-27 12:46:46.557 [main] HomePageStepdefination - Validating industry: FINANCIAL SERVICES
+[INFO ] 2023-09-27 12:46:46.618 [main] HomePageStepdefination - Validating industry: CONSTRUCTION
+[INFO ] 2023-09-27 12:46:46.694 [main] HomePageStepdefination - Validating industry: HEALTH CARE
+[INFO ] 2023-09-27 12:46:46.766 [main] HomePageStepdefination - Validating industry: TELECOMMUNICATION
+[INFO ] 2023-09-27 12:46:46.819 [main] HomePageStepdefination - Validating industry: HEALTH TECH
+[INFO ] 2023-09-27 12:46:46.871 [main] HomePageStepdefination - Validating industry: AUTOMOTIVE
+[INFO ] 2023-09-27 12:46:46.913 [main] HomePageStepdefination - Validating industry: RETAIL
+[INFO ] 2023-09-27 12:46:47.223 [main] HomePageStepdefination - Browsing the Dbiz.ai URL
+[INFO ] 2023-09-27 12:46:49.745 [main] HomePage - Navigated to URL: https://uat.dbizsolution.com/
+[INFO ] 2023-09-27 12:46:54.752 [main] HomePage - Navigated to URL: https://uat.dbizsolution.com/
+[INFO ] 2023-09-27 12:46:54.752 [main] HomePageStepdefination - Verifying that I am on the Home page
+[INFO ] 2023-09-27 12:46:54.752 [main] HomePageStepdefination - Validating HomePage Header Navigation bar elements
+[INFO ] 2023-09-27 12:46:54.908 [main] HomePageStepdefination - Validating Offer Section in homepage
+[INFO ] 2023-09-27 12:46:54.908 [main] HomePageStepdefination - Validating offer: PRODUCT DEVELOPMENT
+[INFO ] 2023-09-27 12:46:54.948 [main] HomePageStepdefination - Validating offer: PLATFORM
+[INFO ] 2023-09-27 12:46:55.004 [main] HomePageStepdefination - Validating offer: DATA ARCHITECTURE
+[INFO ] 2023-09-27 12:46:55.050 [main] HomePageStepdefination - Validating offer: CLOUD
+[INFO ] 2023-09-27 12:46:55.093 [main] HomePageStepdefination - Validating offer: RAPID APPLICATION DEVELOPMENT
+[INFO ] 2023-09-27 12:46:55.134 [main] HomePageStepdefination - Validating offer: EXPERIENCE DESIGN
+[INFO ] 2023-09-27 12:46:55.174 [main] HomePageStepdefination - Validating offer: DIGITAL MARKETING
+[INFO ] 2023-09-27 12:46:55.216 [main] HomePageStepdefination - Validating offer: ACCELERATED GROWTH CONSULTING
+[INFO ] 2023-09-27 12:46:55.256 [main] HomePageStepdefination - Validating offer: AI
+[INFO ] 2023-09-27 12:46:55.297 [main] HomePageStepdefination - Validating Offersection in homepage
+[INFO ] 2023-09-27 12:46:55.616 [main] HomePageStepdefination - Validating JOIN OUR TEAM in homepage
