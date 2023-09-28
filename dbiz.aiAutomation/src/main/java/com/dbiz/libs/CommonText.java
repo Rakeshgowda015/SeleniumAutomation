@@ -10,7 +10,7 @@ public class CommonText {
     public static String homepagedigital_Text="A DIGITAL ENGINEERING PARTNERSHIP";
     public static String homepagedigitalp_Text="Our mission is to inspire you to greater heights. If you bring your know-how, we’ll help you smooth out your business processes and conquer any challenges with our digital experience design.";
     public static String productdevelopment_Text="Digital Native Product Development, App Modernisation & Enterprise Integration (SaaS, IP & Products)";
-    public static String platform_Text="Dynamic 365 CE, F&O, & Power platforms";
+    public static String platform_Text="Dynamics 365 CE, F&O, & Power platforms​";
     public static String dataarchitecture_Text="Creation and maintaining of a single source of truth, unlocking the power of data through AI, enabling continous change and growth.";
     public static String cloud_Text="Cloud consulting assessments, deployments, migrations and DevSecOps";
     public static String rapidapplicationdevelopment_Text="Rapid application rollout with low code platforms and RPE frameworks & robotic process automation.";
@@ -19,6 +19,5 @@ public class CommonText {
     public static String acceleratedgrowthconsulting_Text="Accelerating your business growth with expert consulting services, leveraging cutting-edge digital strategies to drive success in today’s competitive landscape";
     public static String ai_Text="Our team stimulates disruption through autonomy and unbox the future by democratizing AI-driven decision-making from the Digital-Twin";
     public static String joinourteam_Text="Step into our world of innovation and growth, where every day is a chance to make an impact!";
-    
-    
+    public static String getintouchwithus_Text="If you`re sitting on ideas or challenges,  lets`s figure them out together!";
 }
