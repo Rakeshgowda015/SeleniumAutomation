@@ -1,6 +1,5 @@
 package com.dbiz.pages;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -22,7 +21,7 @@ public class HomePage extends BasePage {
 	}
 
 	// Find banner heading element by text
-	WebElement bannerHeading(String text) {
+	WebElement verifyingText(String text) {
 		return wd.findElement(By.xpath("//*[text()='" + text + "']"));
 	}
 
@@ -36,7 +35,7 @@ public class HomePage extends BasePage {
 	}
 
 	WebElement OfferSectionP(String text) {
-		return wd.findElement(By.xpath("//div/h1[text()='What We offer']/..//p[text()='" + text + "']"));
+		return wd.findElement(By.xpath("//div/h1[text()='What We offer']/..//p[contains(text(),'" + text + "')]"));
 	}
 
 	WebObjectLocators webLocators = new WebObjectLocators();
@@ -49,7 +48,17 @@ public class HomePage extends BasePage {
 	private String careers = webLocators.getPaths("Careers");
 	private String contact = webLocators.getPaths("Contact");
 	private String dbizlogo = webLocators.getPaths("Dbizlogo");
-	private String Explorebutton = webLocators.getPaths("Explorebutton");
+	private String explorebutton = webLocators.getPaths("Explorebutton");
+	private String contactbutton = webLocators.getPaths("Contactbutton");
+	private String outsystemslink = webLocators.getPaths("Outsystemslink");
+	private String tricentislink = webLocators.getPaths("Tricentislink");
+	private String salesforcelink = webLocators.getPaths("Salesforcelink");
+	private String microsoftlink = webLocators.getPaths("Microsoftlink");
+	private String linkedinlink = webLocators.getPaths("Linkedinlink");
+	private String twitterlink = webLocators.getPaths("Twitterlink");
+	private String instagramlink = webLocators.getPaths("Instagramlink");
+	private String facebooklink = webLocators.getPaths("Facebooklink");
+	private String dbizsolutionlink = webLocators.getPaths("Dbizsolutionlink");
 
 	// HomePage Text
 	String welcometext = CommonText.homepagewelcome_Text;
@@ -68,12 +77,13 @@ public class HomePage extends BasePage {
 	String digitalmarketingtext = CommonText.digitalmarketing_Text;
 	String acceleratedgrowthconsultingtext = CommonText.acceleratedgrowthconsulting_Text;
 	String aitext = CommonText.ai_Text;
-	
+	String getintouchwithustext = CommonText.getintouchwithus_Text;
 	String joinourteamtext = CommonText.joinourteam_Text;
 
 	// Navigate to the home page using the base URL from properties
 	public void goToHomePage() {
-		String baseurl = PropertiesFile.getProperty("BaseURL");
+		String baseurl = String.format(PropertiesFile.getProperty("BaseURL"),
+				PropertiesFile.getProperty("ENV"));
 		goToUrl(baseurl);
 		try {
 			Thread.sleep(5000);
@@ -130,24 +140,24 @@ public class HomePage extends BasePage {
 			switch (textName) {
 			case "Bannerheading":
 				String text = CommonText.homepagebanner_Text;
-				scrollIntoViewUsingWebElement(bannerHeading(text));
-				status = bannerHeading(text).isDisplayed();
+				scrollIntoViewUsingWebElement(verifyingText(text));
+				status = verifyingText(text).isDisplayed();
 				if (!status) {
 					LOG.error("Banner heading not displayed.");
 				}
 				break;
 			case "WelcomeText":
-				scrollIntoViewUsingWebElement(bannerHeading(welcometext));
-				status = bannerHeading(welcometext).isDisplayed() && bannerHeading(fasttracktext).isDisplayed()
-						&& bannerHeading(fasttrackptext).isDisplayed() && bannerHeading(blendingarttext).isDisplayed()
-						&& bannerHeading(blendingartptext).isDisplayed() && bannerHeading(digitaltext).isDisplayed()
-						&& bannerHeading(digitalptext).isDisplayed();
+				scrollIntoViewUsingWebElement(verifyingText(welcometext));
+				status = verifyingText(welcometext).isDisplayed() && verifyingText(fasttracktext).isDisplayed()
+						&& verifyingText(fasttrackptext).isDisplayed() && verifyingText(blendingarttext).isDisplayed()
+						&& verifyingText(blendingartptext).isDisplayed() && verifyingText(digitaltext).isDisplayed()
+						&& verifyingText(digitalptext).isDisplayed();
 				if (!status) {
-					LOG.error(textName + " WelcomeText not displayed.");
+					LOG.error("WelcomeText not displayed.");
 				}
 				break;
 			case "Offersection":
-				scrollIntoViewUsingWebElement(OfferSectionP(productdevelopmenttext));  				
+				scrollIntoViewUsingWebElement(OfferSectionP(productdevelopmenttext));
 				status = OfferSectionP(productdevelopmenttext).isDisplayed()
 						&& OfferSectionP(platformtext).isDisplayed()
 						&& OfferSectionP(dataarchitecturetext).isDisplayed()
@@ -159,10 +169,38 @@ public class HomePage extends BasePage {
 				}
 				break;
 			case "JOIN OUR TEAM":
-				scrollIntoViewUsingWebElement(bannerHeading(textName));
-				status = bannerHeading(textName).isDisplayed() && bannerHeading(joinourteamtext).isDisplayed() && isElementPresent(Explorebutton);
+				scrollIntoViewUsingWebElement(verifyingText(textName));
+				status = verifyingText(textName).isDisplayed() && verifyingText(joinourteamtext).isDisplayed()
+						&& isElementPresent(explorebutton);
 				if (!status) {
-					LOG.error("Offersection not displayed.");
+					LOG.error("JOIN OUR TEAM not displayed.");
+				}
+				break;
+			case "Get in touch with us":
+				scrollIntoViewUsingWebElement(verifyingText(textName));
+				status = verifyingText(textName).isDisplayed() && verifyingText(getintouchwithustext).isDisplayed()
+						&& isElementPresent(contactbutton);
+				if (!status) {
+					LOG.error("Get in touch with us not displayed.");
+				}
+				break;
+			case "Our Tech Partners":
+				scrollIntoViewUsingWebElement(verifyingText(textName));
+				status = verifyingText(textName).isDisplayed() && isElementPresent(outsystemslink)
+						&& isElementPresent(tricentislink) && isElementPresent(salesforcelink)
+						&& isElementPresent(microsoftlink);
+				if (!status) {
+					LOG.error("Our Tech Partners not displayed.");
+				}
+				break;
+
+			case "Connect with us":
+				scrollIntoViewUsingWebElement(verifyingText(textName));
+				status = verifyingText(textName).isDisplayed() && isElementPresent(linkedinlink)
+						&& isElementPresent(twitterlink) && isElementPresent(instagramlink)
+						&& isElementPresent(facebooklink) && isElementPresent(dbizsolutionlink);
+				if (!status) {
+					LOG.error("Our Tech Partners not displayed.");
 				}
 				break;
 			}
