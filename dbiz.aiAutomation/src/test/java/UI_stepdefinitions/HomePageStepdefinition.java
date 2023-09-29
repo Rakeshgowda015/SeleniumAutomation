@@ -1,4 +1,4 @@
-package UI_stepdefinitions;
+package ui_stepdefinitions;
 
 import java.util.List;
 

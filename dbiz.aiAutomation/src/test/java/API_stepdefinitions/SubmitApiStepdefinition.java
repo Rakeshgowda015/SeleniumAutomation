@@ -1,4 +1,4 @@
-package API_stepdefinitions;
+package api_stepdefinitions;
 
 import com.dbiz.model.ApiRequestBody;
 import com.dbiz.utils.PropertiesFile;
