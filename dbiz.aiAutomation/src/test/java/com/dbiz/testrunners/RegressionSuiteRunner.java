@@ -7,7 +7,7 @@ package com.dbiz.testrunners;
 
 	@CucumberOptions(
 	    features = "src/test/resources/UI_features",
-	    glue = {"UI_stepdefinitions"},
+	    glue = {"ui_stepdefinitions"},
 	    		plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
 	    		tags="@Regression")
 
