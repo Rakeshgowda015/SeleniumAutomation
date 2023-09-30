@@ -6,6 +6,10 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
+import org.openqa.selenium.firefox.FirefoxOptions;
+
 import com.dbiz.utils.PropertiesFile;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
@@ -25,8 +29,20 @@ public class Hooks {
 			// You can add additional options here if needed
 
 			driver = new ChromeDriver(chromeOptions);
+		}else if (browser.equalsIgnoreCase("Firefox")) {
+			try {
+		System.setProperty("webdriver.gecko.driver", "../dbiz.aiAutomation/drivers/geckodriver.exe");
+
+			    // Set up Firefox options (optional)
+			    FirefoxOptions firefoxOptions = new FirefoxOptions();
+			    // You can add additional options here if needed
+
+			    driver = new FirefoxDriver(firefoxOptions);
+			} catch (Exception e) {
+			    e.printStackTrace();
+			}
 		}
-		// Add support for other browsers (e.g., Firefox) here
+		
 
 		// Maximize the browser window
 		driver.manage().window().maximize();
