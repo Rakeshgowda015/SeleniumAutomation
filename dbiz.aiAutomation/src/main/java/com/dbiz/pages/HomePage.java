@@ -82,8 +82,7 @@ public class HomePage extends BasePage {
 
 	// Navigate to the home page using the base URL from properties
 	public void goToHomePage() {
-		String baseurl = String.format(PropertiesFile.getProperty("BaseURL"),
-				PropertiesFile.getProperty("ENV"));
+		String baseurl = String.format(PropertiesFile.getProperty("BaseURL"), PropertiesFile.getProperty("ENV"));
 		goToUrl(baseurl);
 		try {
 			Thread.sleep(5000);
@@ -99,6 +98,36 @@ public class HomePage extends BasePage {
 		boolean status = false;
 		switch (Page) {
 		case "Home":
+			status = getWindowTitle().equals(title);
+			if (!status) {
+				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
+			}
+			break;
+		case "Contact":
+			status = getWindowTitle().equals(title);
+			if (!status) {
+				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
+			}
+			break;
+		case "(20) DBiz.ai: Overview | LinkedIn":
+			status = getWindowTitle().equals(title);
+			if (!status) {
+				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
+			}
+			break;
+		case "Log in to Twitter / X":
+			status = getWindowTitle().equals(title);
+			if (!status) {
+				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
+			}
+			break;   
+		case "www.instagram.com":
+			status = getWindowTitle().equals(title);
+			if (!status) {
+				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
+			}
+			break;    
+		case "DBiz Solutions | Facebook":
 			status = getWindowTitle().equals(title);
 			if (!status) {
 				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
@@ -226,6 +255,70 @@ public class HomePage extends BasePage {
 		boolean status = false;
 		scrollIntoViewUsingWebElement(OfferSection(textName));
 		status = OfferSection(textName).isDisplayed();
+
+		return status;
+	}
+
+	public boolean clickOnButton(String buttonName) throws InterruptedException {
+		boolean status = false;
+
+		switch (buttonName) {
+		case "Dbiz.ai":
+			Thread.sleep(2000);
+			status = clickOnElement(dbizlogo);
+			Thread.sleep(2000);
+			break;
+		case "Contact":
+			scrollIntoView(contactbutton);
+			Thread.sleep(3000);
+			status = clickOnElement(contactbutton);
+			Thread.sleep(2000);
+			break;
+		default:
+			LOG.error("Button not recognized: " + buttonName);
+			break;
+		}
+
+		return status;
+	}
+	public boolean clickOnLink(String linkName) throws InterruptedException {
+		boolean status = false;
+
+		switch (linkName) {
+		case "Linkedin":
+			scrollIntoView(linkedinlink);
+			Thread.sleep(2000);
+			status = clickOnElement(linkedinlink);
+			Thread.sleep(2000);
+			break;
+		case "Twitter":
+			scrollIntoView(twitterlink);
+			Thread.sleep(2000);
+			status = clickOnElement(twitterlink);
+			Thread.sleep(2000);
+			break;
+		case "Instagram":
+			scrollIntoView(instagramlink);
+			Thread.sleep(2000);
+			status = clickOnElement(instagramlink);
+			Thread.sleep(2000);
+			break;    
+		case "Facebook":
+			scrollIntoView(facebooklink);
+			Thread.sleep(2000);
+			status = clickOnElement(facebooklink);
+			Thread.sleep(2000);
+			break;
+		case "Mail":
+			scrollIntoView(dbizsolutionlink);
+			Thread.sleep(2000);
+			status = isElementClickable(dbizsolutionlink);
+			Thread.sleep(2000);
+			break;
+		default:
+			LOG.error("Link not recognized: " + linkName);
+			break;
+		}
 
 		return status;
 	}

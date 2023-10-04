@@ -122,7 +122,35 @@ public class BasePage {
 	        JavascriptExecutor js = (JavascriptExecutor) wd;
 	        js.executeScript("arguments[0].scrollIntoView(true);", locator);
 	    }
-	
+
+	    public boolean clickOnElement(String locator) {
+	        try {
+	            By by = ObjectLocators.getBySelector(locator);
+	            WebElement element = wd.findElement(by);
+	            element.click();
+	            return true; // Indicate success if the element was clicked
+	        } catch (Exception e) {
+	            // Handle any exceptions that may occur during the click action
+	            LOG.error("Error clicking on element with locator: " + locator, e);
+	            return false; // Indicate failure if an exception occurred
+	        }
+	    }
+
+	    protected boolean isElementClickable(String locator) {
+	        By by = ObjectLocators.getBySelector(locator);
+	        return isElementClickable(by);
+	    }
+
+	    private boolean isElementClickable(By by) {
+	        try {
+	            WebElement element = wd.findElement(by);
+	            return (element != null && element.isEnabled());
+	        } catch (NoSuchElementException e) {
+	            return false;
+	        } catch (Exception e) {
+	            return false;
+	        }
+	    }
 
 
 	    

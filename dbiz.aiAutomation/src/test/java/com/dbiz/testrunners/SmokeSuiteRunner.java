@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
     features = "src/test/resources/UI_features",
     glue = {"ui_stepdefinitions"},
     plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-    tags="@Smoke"
+    tags="@Test"
 )
 
 
