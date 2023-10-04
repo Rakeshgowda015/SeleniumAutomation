@@ -1,5 +1,6 @@
 package api_stepdefinitions;
 
+import com.dbiz.libs.GlobalConstants;
 import com.dbiz.model.ApiRequestBody;
 import com.dbiz.utils.PropertiesFile;
 import io.cucumber.java.en.Given;
@@ -38,6 +39,7 @@ public class SubmitApiStepdefinition {
             // Send a POST request to the postToken API
             response = RestAssured.given().log().all() // Log request details (including headers and body)
                     .contentType(ContentType.JSON) // Set content type as JSON
+                    .header("X-CSRF-Token",GlobalConstants.Token)
                     .body(requestbody.submitApiPayLoad()) // Set the request body
                     .post(); // Specify the API path for the POST request
 
@@ -50,7 +52,7 @@ public class SubmitApiStepdefinition {
         }
     }
 
-    @Then("the HomePageAPI call got success with status code {int}")
+    @Then("the SubmitAPI call got success with status code {int}")
     public void the_homepageapi_call_got_success_with_status_code(Integer expectedStatusCode) {
         try {
             // Assert the status code

@@ -40,7 +40,7 @@ public class HomePageApiStepdefinition {
 	        }
 	    }
 
-	    @Then("the API call got success with status code {int}")
+	    @Then("the HomePageAPI call got success with status code {int}")
 	    public void theAPICallGotSuccessWithStatusCode(Integer expectedStatusCode) {
 	        try {
 	            // Assert the status code
