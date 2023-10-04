@@ -6,11 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
 import com.dbiz.utils.PropertiesFile;
-import com.dbiz.pages.ContactPage;
 import com.dbiz.pages.HomePage;
-
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

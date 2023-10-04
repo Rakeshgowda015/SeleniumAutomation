@@ -1,6 +1,6 @@
-Feature: Validating Token API
+Feature: Validating SubmitAPI
 
-  Scenario: Generating the Token
+  Scenario: To Validate Submit API
     Given SubmitAPI Payload
     When user calls SubmitAPI with Post http request
     Then the API call got success with status code 200

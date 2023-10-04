@@ -50,8 +50,8 @@ public class SubmitApiStepdefinition {
         }
     }
 
-    @Then("the API call got success with status code {int}")
-    public void the_api_call_got_success_with_status_code(Integer expectedStatusCode) {
+    @Then("the HomePageAPI call got success with status code {int}")
+    public void the_homepageapi_call_got_success_with_status_code(Integer expectedStatusCode) {
         try {
             // Assert the status code
             response.then().log().all().assertThat().statusCode(expectedStatusCode);
