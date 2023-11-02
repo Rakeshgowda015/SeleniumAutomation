@@ -1,8 +1,7 @@
 package com.dbiz.libs;
 
 public class CommonText {
-	public static String homepagebanner_Text="A humane blend of art and engineering";
-    public static String homepagewelcome_Text="IMPACTFUL EXPERIENCE AT SCALE";
+	public static String homepagebanner_Text="A human blend of art and engineering";
     public static String homepagefasttrack_Text="FAST-TRACK DIGITAL TRANSFORMATION";
     public static String homepagefasttreckP_Text="We like to stay nimble. Our processes are built to ideate quickly, prove a solution works, lay the foundations, then help you build your software on top!";
     public static String homepageblendingart_Text="BLENDING ART & ENGINEERING";

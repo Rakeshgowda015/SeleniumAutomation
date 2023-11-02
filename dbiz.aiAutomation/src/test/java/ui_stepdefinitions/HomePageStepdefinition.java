@@ -17,21 +17,24 @@ import io.cucumber.java.en.When;
 public class HomePageStepdefinition {
 
 	private static final Logger logger = LogManager.getLogger(HomePageStepdefinition.class);
-	WebDriver driver=Hooks.setUp();
+	WebDriver driver = Hooks.setUp();
 	HomePage homePage = new HomePage(driver);
-
 
 	@Given("^I browse the Dbiz.ai url$")
 	public void i_browse_the_dbizai_url() {
 		logger.info("Browsing the Dbiz.ai URL");
 		homePage.goToHomePage();
 	}
+	@Then("submit button should be in {string} mode in contactpage")
+	public void submit_button_should_be_in_disabled_mode_in_contactpage(String button) {
+		logger.info("submit button should be in disabled mode in contactpage");
+		Assert.assertTrue(homePage.clickOnButton(button));
+	}
 
 	@Then("I should be on {string} page")
-	public void i_should_be_on_page(String pageName) {
+	public void i_should_be_on_page(String pageName)  {
 		logger.info("Verifying that I am on the '" + pageName + "' page", pageName);
-		String homepageTitle = PropertiesFile.getProperty("Title");
-		Assert.assertTrue(homePage.validatePageTitle(homepageTitle, pageName));
+		Assert.assertTrue(homePage.validatePageTitle(pageName));
 	}
 
 	@And("I validate {string} Header Navigation bar elements")
@@ -67,26 +70,28 @@ public class HomePageStepdefinition {
 
 	}
 
-    
 	@And("I click on {string} logo in homepage")
-	public void i_click_on_some_logo_in_homepage(String buttonName) throws InterruptedException {
-	    logger.info("I click on '" + buttonName + "' logo in homepage");
-	    Assert.assertTrue(homePage.clickOnButton(buttonName));
+	public void i_click_on_some_logo_in_homepage(String buttonName)  {
+		logger.info("I click on '" + buttonName + "' logo in homepage");
+		Assert.assertTrue(homePage.clickOnButton(buttonName));
 	}
-	
-	
-	@When("I click on {string} button in homepage")
-	public void i_click_on_some_button_in_homepage(String buttonName) throws InterruptedException {
-	    logger.info("I click on '" + buttonName + "' logo in homepage");
-	    Assert.assertTrue(homePage.clickOnButton(buttonName));
-	}
-	
 
-	 
-		@When("I click on {string} link in homepage")
-		public void i_click_on_some_link_in_homepage(String linkName) throws InterruptedException {
-		    logger.info("I click on '" + linkName + "' link in homepage");
-		    Assert.assertTrue(homePage.clickOnLink(linkName));
-		}
+	@When("I click on {string} button in homepage")
+	public void i_click_on_some_button_in_homepage(String buttonName)  {
+		logger.info("I click on '" + buttonName + "' logo in homepage");
+		Assert.assertTrue(homePage.clickOnButton(buttonName));
+	}
+
+	@When("I click on {string} link in homepage")
+	public void i_click_on_some_link_in_homepage(String linkName)  {
+		logger.info("I click on '" + linkName + "' link in homepage");
+		Assert.assertTrue(homePage.clickOnLink(linkName));
+	}
+
+	@When("I click on {string} button in contactpage")
+	public void i_click_on_some_button_in_contactpage(String buttonName)  {
+		logger.info("I click on '" + buttonName + "' button in homepage");
+		Assert.assertTrue(homePage.clickOnButton(buttonName));
+	}
 
 }

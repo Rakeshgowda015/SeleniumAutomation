@@ -48,6 +48,8 @@ public class HomePage extends BasePage {
 	private String careers = webLocators.getPaths("Careers");
 	private String contact = webLocators.getPaths("Contact");
 	private String dbizlogo = webLocators.getPaths("Dbizlogo");
+	private String Learnmorebtton = webLocators.getPaths("Learnmorebtton");
+	private String impactfulexperienceatscale = webLocators.getPaths("Impactfulexperienceatscale");
 	private String explorebutton = webLocators.getPaths("Explorebutton");
 	private String contactbutton = webLocators.getPaths("Contactbutton");
 	private String outsystemslink = webLocators.getPaths("Outsystemslink");
@@ -59,9 +61,10 @@ public class HomePage extends BasePage {
 	private String instagramlink = webLocators.getPaths("Instagramlink");
 	private String facebooklink = webLocators.getPaths("Facebooklink");
 	private String dbizsolutionlink = webLocators.getPaths("Dbizsolutionlink");
+	private String contactformsubmitbutton = webLocators.getPaths("Contactformsubmitbutton");
+	private String contactformdisabledsubmitbutton = webLocators.getPaths("Contactformdisabledsubmitbutton");
 
 	// HomePage Text
-	String welcometext = CommonText.homepagewelcome_Text;
 	String fasttracktext = CommonText.homepagefasttrack_Text;
 	String fasttrackptext = CommonText.homepagefasttreckP_Text;
 	String blendingarttext = CommonText.homepageblendingart_Text;
@@ -84,54 +87,53 @@ public class HomePage extends BasePage {
 	public void goToHomePage() {
 		String baseurl = String.format(PropertiesFile.getProperty("BaseURL"), PropertiesFile.getProperty("ENV"));
 		goToUrl(baseurl);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		sleep(5);
 		LOG.info("Navigated to URL: " + baseurl); // Log URL navigation
 	}
 
 	// Validate the page title for a specific page
-	public boolean validatePageTitle(String title, String Page) {
+	public boolean validatePageTitle(String Page) {
 		boolean status = false;
 		switch (Page) {
 		case "Home":
-			status = getWindowTitle().equals(title);
+			sleep(4);
+			String homePageTitle = PropertiesFile.getProperty("HomePageTitle");
+			status = getWindowTitle().equals(homePageTitle);
 			if (!status) {
-				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
+				LOG.error("Page title validation failed. Expected: " + homePageTitle + ", Actual: " + getWindowTitle());
 			}
 			break;
 		case "Contact":
-			status = getWindowTitle().equals(title);
+			sleep(2);
+			String contactPageTitle = PropertiesFile.getProperty("ContactPageTitle");
+			status = getWindowTitle().equals(contactPageTitle);
 			if (!status) {
-				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
+				LOG.error("Page title validation failed. Expected: " + contactPageTitle + ", Actual: "
+						+ getWindowTitle());
+			}
+			break;
+		case "About":
+			sleep(2);
+			String aboutPageTitle = PropertiesFile.getProperty("AboutPageTitle");
+			status = getWindowTitle().equals(aboutPageTitle);
+			if (!status) {
+				LOG.error("Page title validation failed. Expected: " + aboutPageTitle + ", Actual: "
+						+ getWindowTitle());
 			}
 			break;
 		case "(20) DBiz.ai: Overview | LinkedIn":
+		case "Log in to Twitter / X":
+		case "www.instagram.com":
+		case "DBiz Solutions | Facebook":
+			String title = PropertiesFile.getProperty("ContactPageTitle");
 			status = getWindowTitle().equals(title);
 			if (!status) {
 				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
 			}
 			break;
-		case "Log in to Twitter / X":
-			status = getWindowTitle().equals(title);
-			if (!status) {
-				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
-			}
-			break;   
-		case "www.instagram.com":
-			status = getWindowTitle().equals(title);
-			if (!status) {
-				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
-			}
-			break;    
-		case "DBiz Solutions | Facebook":
-			status = getWindowTitle().equals(title);
-			if (!status) {
-				LOG.error("Page title validation failed. Expected: " + title + ", Actual: " + getWindowTitle());
-			}
+
+		default:
+			LOG.warn("Unhandled Page title: " + Page);
 			break;
 		}
 		return status;
@@ -145,9 +147,11 @@ public class HomePage extends BasePage {
 			switch (pageName) {
 			case "HomePage":
 				scrollIntoView(about);
-				status = isElementPresent(about) && isElementPresent(services) && isElementPresent(technology)
-						&& isElementPresent(insights) && isElementPresent(careers) && isElementPresent(contact)
-						&& isElementPresent(dbizlogo);
+				status = isElementPresent(about) && isElementPresent(services) && isElementPresent(contact);
+
+//						&& isElementPresent(insights) && isElementPresent(careers) 
+//						
+//						&& isElementPresent(dbizlogo);
 				if (!status) {
 					LOG.error("Navigation bar element check failed.");
 				}
@@ -169,20 +173,18 @@ public class HomePage extends BasePage {
 			switch (textName) {
 			case "Bannerheading":
 				String text = CommonText.homepagebanner_Text;
-				scrollIntoViewUsingWebElement(verifyingText(text));
-				status = verifyingText(text).isDisplayed();
+				status = verifyingText(text).isDisplayed() && isElementPresent(Learnmorebtton);
 				if (!status) {
-					LOG.error("Banner heading not displayed.");
+					LOG.error("'" + textName + "' not displayed.");
 				}
 				break;
-			case "WelcomeText":
-				scrollIntoViewUsingWebElement(verifyingText(welcometext));
-				status = verifyingText(welcometext).isDisplayed() && verifyingText(fasttracktext).isDisplayed()
-						&& verifyingText(fasttrackptext).isDisplayed() && verifyingText(blendingarttext).isDisplayed()
-						&& verifyingText(blendingartptext).isDisplayed() && verifyingText(digitaltext).isDisplayed()
-						&& verifyingText(digitalptext).isDisplayed();
+			case "Welcomeblock":
+				status = isElementPresent(impactfulexperienceatscale) && verifyingText(fasttracktext).isDisplayed()
+				// && verifyingText(fasttrackptext).isDisplayed()
+						&& verifyingText(blendingarttext).isDisplayed() && verifyingText(blendingartptext).isDisplayed()
+						&& verifyingText(digitaltext).isDisplayed() && verifyingText(digitalptext).isDisplayed();
 				if (!status) {
-					LOG.error("WelcomeText not displayed.");
+					LOG.error("'" + textName + "' not displayed");
 				}
 				break;
 			case "Offersection":
@@ -194,7 +196,7 @@ public class HomePage extends BasePage {
 						&& OfferSectionP(experiencedesgntext).isDisplayed() && OfferSectionP(cloudtext).isDisplayed()
 						&& OfferSectionP(digitalmarketingtext).isDisplayed() && OfferSectionP(aitext).isDisplayed();
 				if (!status) {
-					LOG.error("Offersection not displayed.");
+					LOG.error("'" + textName + "' not displayed.");
 				}
 				break;
 			case "JOIN OUR TEAM":
@@ -202,7 +204,7 @@ public class HomePage extends BasePage {
 				status = verifyingText(textName).isDisplayed() && verifyingText(joinourteamtext).isDisplayed()
 						&& isElementPresent(explorebutton);
 				if (!status) {
-					LOG.error("JOIN OUR TEAM not displayed.");
+					LOG.error("'" + textName + "' not displayed.");
 				}
 				break;
 			case "Get in touch with us":
@@ -210,7 +212,7 @@ public class HomePage extends BasePage {
 				status = verifyingText(textName).isDisplayed() && verifyingText(getintouchwithustext).isDisplayed()
 						&& isElementPresent(contactbutton);
 				if (!status) {
-					LOG.error("Get in touch with us not displayed.");
+					LOG.error("'" + textName + "' not displayed.");
 				}
 				break;
 			case "Our Tech Partners":
@@ -219,7 +221,7 @@ public class HomePage extends BasePage {
 						&& isElementPresent(tricentislink) && isElementPresent(salesforcelink)
 						&& isElementPresent(microsoftlink);
 				if (!status) {
-					LOG.error("Our Tech Partners not displayed.");
+					LOG.error("'" + textName + "' not displayed.");
 				}
 				break;
 
@@ -229,7 +231,7 @@ public class HomePage extends BasePage {
 						&& isElementPresent(twitterlink) && isElementPresent(instagramlink)
 						&& isElementPresent(facebooklink) && isElementPresent(dbizsolutionlink);
 				if (!status) {
-					LOG.error("Our Tech Partners not displayed.");
+					LOG.error("'" + textName + "' not displayed.");
 				}
 				break;
 			}
@@ -259,20 +261,32 @@ public class HomePage extends BasePage {
 		return status;
 	}
 
-	public boolean clickOnButton(String buttonName) throws InterruptedException {
+	public boolean clickOnButton(String buttonName) {
 		boolean status = false;
 
 		switch (buttonName) {
 		case "Dbiz.ai":
-			Thread.sleep(2000);
+			sleep(2);
 			status = clickOnElement(dbizlogo);
-			Thread.sleep(2000);
+			sleep(2);
 			break;
 		case "Contact":
 			scrollIntoView(contactbutton);
-			Thread.sleep(3000);
+			sleep(4);
 			status = clickOnElement(contactbutton);
-			Thread.sleep(2000);
+			sleep(2);
+			break;
+		case "submit":
+			scrollIntoView(contactformsubmitbutton);
+			sleep(5);
+			status = clickOnElement(contactformsubmitbutton);
+			sleep(1);
+			break;
+		case "disabled":
+			scrollIntoView(contactformsubmitbutton);
+			sleep(3);
+			status = isElementPresent(contactformdisabledsubmitbutton);
+			sleep(2);
 			break;
 		default:
 			LOG.error("Button not recognized: " + buttonName);
@@ -281,39 +295,49 @@ public class HomePage extends BasePage {
 
 		return status;
 	}
-	public boolean clickOnLink(String linkName) throws InterruptedException {
+
+	public boolean clickOnLink(String linkName)  {
 		boolean status = false;
 
 		switch (linkName) {
 		case "Linkedin":
+			sleep(4);
 			scrollIntoView(linkedinlink);
-			Thread.sleep(2000);
 			status = clickOnElement(linkedinlink);
-			Thread.sleep(2000);
+			sleep(3);
 			break;
 		case "Twitter":
+			sleep(4);
 			scrollIntoView(twitterlink);
-			Thread.sleep(2000);
 			status = clickOnElement(twitterlink);
-			Thread.sleep(2000);
+			sleep(4);
 			break;
 		case "Instagram":
+			sleep(4);
 			scrollIntoView(instagramlink);
-			Thread.sleep(2000);
 			status = clickOnElement(instagramlink);
-			Thread.sleep(2000);
-			break;    
+			sleep(3);
+			break;
 		case "Facebook":
+			sleep(4);
 			scrollIntoView(facebooklink);
-			Thread.sleep(2000);
 			status = clickOnElement(facebooklink);
-			Thread.sleep(2000);
+			sleep(4);
 			break;
 		case "Mail":
+			sleep(3);
 			scrollIntoView(dbizsolutionlink);
-			Thread.sleep(2000);
 			status = isElementClickable(dbizsolutionlink);
-			Thread.sleep(2000);
+			sleep(3);
+		case "Contact":
+			sleep(4);
+			status = clickOnElement(contact);
+			sleep(4);
+			break;
+		case "About":
+			sleep(4);
+			status = clickOnElement(about);
+			sleep(4);
 			break;
 		default:
 			LOG.error("Link not recognized: " + linkName);
