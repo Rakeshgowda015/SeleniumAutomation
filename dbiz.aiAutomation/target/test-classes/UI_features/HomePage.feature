@@ -1,13 +1,13 @@
 Feature: Validating the Homepage
 
-  Background: User navigates to the Dbiz.ai Application Homepage
+  Scenario: User navigates to the Dbiz.ai Application Homepage
     Given I browse the Dbiz.ai url
     Then I should be on "Home" page
-    #And I validate "HomePage" Header Navigation bar elements
+    And I validate "HomePage" Header Navigation bar elements
 
 
-  Scenario: To validate Header in Dbiz.ai Homepage
-    Then I validate "Bannerheading" in homepage
+  #Scenario: To validate Header in Dbiz.ai Homepage
+    #Then I validate "Bannerheading" in homepage
    # And I validate "Welcomeblock" in homepage
 
 

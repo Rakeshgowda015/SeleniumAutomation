@@ -9,6 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.dbiz.pages.HomePage;
 
@@ -172,5 +173,42 @@ public class BasePage {
 			return false; // Indicate failure if an exception occurred
 		}
 	}
+	
+	public boolean hoverOverElement(String locator) {
+	    try {
+	        By by = ObjectLocators.getBySelector(locator);
+	        WebElement element = wd.findElement(by);
+	        
+	        // Use Actions class to hover over the element
+	        Actions actions = new Actions(wd);
+	        actions.moveToElement(element).build().perform();
+
+	        return true; // Indicate success if the mouse over action is performed
+	    } catch (Exception e) {
+	        // Handle any exceptions that may occur during the action
+	        LOG.error("Error hovering over element with locator: " + locator, e);
+	        return false; // Indicate failure if an exception occurred
+	    }
+	}
+	 // Method to click on an element using JavaScript
+    public boolean clickElementWithJavaScript(String locator) {
+        try {
+            // Convert the locator string to a By object
+            By by = ObjectLocators.getBySelector(locator);
+            
+            // Find the element using the By object
+            WebElement element = wd.findElement(by);
+
+            // Use JavaScript to click on the element
+            JavascriptExecutor js = (JavascriptExecutor) wd;
+            js.executeScript("arguments[0].click();", element);
+
+            return true; // Indicate success if the element was clicked
+        } catch (Exception e) {
+            // Handle any exceptions that may occur during the click action
+            LOG.error("Error clicking on element with locator: " + locator, e);
+            return false; // Indicate failure if an exception occurred
+        }
+    }
 
 }

@@ -43,6 +43,30 @@ public class HomePage extends BasePage {
 	// Web object locators
 	private String about = webLocators.getPaths("About");
 	private String services = webLocators.getPaths("Services");
+	private String rapidProductEngineering = webLocators.getPaths("RapidProductEngineering");
+	private String platform = webLocators.getPaths("Platform");
+	private String dataEngineering = webLocators.getPaths("DataEngineering");
+	private String cloud = webLocators.getPaths("Cloud");
+
+	private String d365SF = webLocators.getPaths("D365SF");
+	private String factweaversdatasuite = webLocators.getPaths("Factweaversdatasuite");
+	private String personadevelopment = webLocators.getPaths("Personadevelopment");
+	private String clientexperiencedesign = webLocators.getPaths("Clientexperiencedesign");
+	private String userexperiencedesign = webLocators.getPaths("Userexperiencedesign");
+	private String journeymapping = webLocators.getPaths("Journeymapping");
+	private String abtesting = webLocators.getPaths("Abtesting");
+	private String searchenginemarketing = webLocators.getPaths("Searchenginemarketing");
+	private String socialMediaMarketing = webLocators.getPaths("SocialMediaMarketing");
+	private String sentimentTrackinge = webLocators.getPaths("SentimentTrackinge");
+	private String emailautomation = webLocators.getPaths("Emailautomation");
+	private String prototyping = webLocators.getPaths("Prototyping");
+
+	private String rapidApplicationDevelopment = webLocators.getPaths("RapidApplicationDevelopment");
+	private String experienceDesign = webLocators.getPaths("ExperienceDesign");
+	private String acceleratedGrowthConsulting = webLocators.getPaths("AcceleratedGrowthConsulting");
+	private String digitalMarketing = webLocators.getPaths("DigitalMarketing");
+	private String product = webLocators.getPaths("Product");
+	private String artificialIntelligence = webLocators.getPaths("ArtificialIntelligence");
 	private String technology = webLocators.getPaths("Technology");
 	private String insights = webLocators.getPaths("Insights");
 	private String careers = webLocators.getPaths("Careers");
@@ -63,6 +87,9 @@ public class HomePage extends BasePage {
 	private String dbizsolutionlink = webLocators.getPaths("Dbizsolutionlink");
 	private String contactformsubmitbutton = webLocators.getPaths("Contactformsubmitbutton");
 	private String contactformdisabledsubmitbutton = webLocators.getPaths("Contactformdisabledsubmitbutton");
+	private String architectureasaService = webLocators.getPaths("ArchitectureasaService");
+	private String infrastructureasaService = webLocators.getPaths("InfrastructureasaService");
+	private String testingasaService = webLocators.getPaths("TestingasaService");
 
 	// HomePage Text
 	String fasttracktext = CommonText.homepagefasttrack_Text;
@@ -96,29 +123,39 @@ public class HomePage extends BasePage {
 		boolean status = false;
 		switch (Page) {
 		case "Home":
-			sleep(4);
-			String homePageTitle = PropertiesFile.getProperty("HomePageTitle");
-			status = getWindowTitle().equals(homePageTitle);
-			if (!status) {
-				LOG.error("Page title validation failed. Expected: " + homePageTitle + ", Actual: " + getWindowTitle());
-			}
-			break;
 		case "Contact":
-			sleep(2);
-			String contactPageTitle = PropertiesFile.getProperty("ContactPageTitle");
-			status = getWindowTitle().equals(contactPageTitle);
-			if (!status) {
-				LOG.error("Page title validation failed. Expected: " + contactPageTitle + ", Actual: "
-						+ getWindowTitle());
-			}
-			break;
 		case "About":
-			sleep(2);
-			String aboutPageTitle = PropertiesFile.getProperty("AboutPageTitle");
-			status = getWindowTitle().equals(aboutPageTitle);
+		case "RapidProductEngineering":
+		case "Services":
+		case "Platform":
+		case "DataEngineering":
+		case "Cloud":
+		case "RapidApplicationDevelopment":
+		case "ArchitectureasaService":
+		case "ExperienceDesign":
+		case "DigitalMarketing":
+		case "AcceleratedGrowthConsulting":
+		case "Product":
+		case "ArtificialIntelligence":
+		case "InfrastructureasaService":
+		case "TestingasaService":
+		case "D365SF":
+		case "FactweaversDataSuite":
+		case "PersonaDevelopment":
+		case "ClientExperienceDesign":
+		case "UserExperienceDesign":
+		case "JourneyMapping":
+		case "ABTesting":
+		case "SearchEngineMarketing":
+		case "SocialMediaMarketing":
+		case "SentimentTrackinge":
+		case "EmailAutomation":
+		case "Prototyping":
+			sleep(4);
+			String PageTitle = PropertiesFile.getProperty(Page + "PageTitle");
+			status = getWindowTitle().equals(PageTitle);
 			if (!status) {
-				LOG.error("Page title validation failed. Expected: " + aboutPageTitle + ", Actual: "
-						+ getWindowTitle());
+				LOG.error("Page title validation failed. Expected: " + PageTitle + ", Actual: " + getWindowTitle());
 			}
 			break;
 		case "(20) DBiz.ai: Overview | LinkedIn":
@@ -296,7 +333,7 @@ public class HomePage extends BasePage {
 		return status;
 	}
 
-	public boolean clickOnLink(String linkName)  {
+	public boolean clickOnLink(String linkName) {
 		boolean status = false;
 
 		switch (linkName) {
@@ -329,6 +366,7 @@ public class HomePage extends BasePage {
 			scrollIntoView(dbizsolutionlink);
 			status = isElementClickable(dbizsolutionlink);
 			sleep(3);
+			break;
 		case "Contact":
 			sleep(4);
 			status = clickOnElement(contact);
@@ -337,6 +375,220 @@ public class HomePage extends BasePage {
 		case "About":
 			sleep(4);
 			status = clickOnElement(about);
+			sleep(4);
+			break;
+		case "Cloud":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(cloud);
+			sleep(4);
+			break;
+		case "Services":
+			sleep(4);
+			status = clickOnElement(services);
+			sleep(4);
+			break;
+		case "RapidProductEngineering":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(rapidProductEngineering);
+			sleep(4);
+			break;
+		case "Platform":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(platform);
+			sleep(4);
+			break;
+		case "DataEngineering":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(dataEngineering);
+			sleep(4);
+			break;
+		case "RapidApplicationDevelopment":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(rapidApplicationDevelopment);
+			sleep(4);
+			break;
+		case "ExperienceDesign":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(experienceDesign);
+			sleep(4);
+			break;
+		case "DigitalMarketing":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(digitalMarketing);
+			sleep(4);
+			break;
+		case "AcceleratedGrowthConsulting":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(acceleratedGrowthConsulting);
+			sleep(4);
+			break;
+		case "Product":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(product);
+			sleep(4);
+			break;
+		case "ArtificialIntelligence":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(4);
+			status = clickOnElement(artificialIntelligence);
+			sleep(4);
+			break;
+
+		case "ArchitectureasaService":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(rapidProductEngineering);
+			sleep(2);
+			status = clickOnElement(architectureasaService);
+			sleep(4);
+			break;
+
+		case "InfrastructureasaService":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(rapidProductEngineering);
+			sleep(2);
+			status = clickOnElement(infrastructureasaService);
+			sleep(4);
+			break;
+
+		case "TestingasaService":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(rapidProductEngineering);
+			sleep(2);
+			status = clickOnElement(testingasaService);
+			sleep(4);
+			break;
+
+		case "D365SF":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(platform);
+			sleep(2);
+			status = clickOnElement(d365SF);
+			sleep(4);
+			break;
+		case "FactweaversDataSuite":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(dataEngineering);
+			sleep(2);
+			status = clickOnElement(factweaversdatasuite);
+			sleep(4);
+			break;
+		case "PersonaDevelopment":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(experienceDesign);
+			sleep(2);
+			status = clickOnElement(personadevelopment);
+			sleep(4);
+			break;
+		case "ClientExperienceDesign":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(experienceDesign);
+			sleep(2);
+			status = clickOnElement(clientexperiencedesign);
+			sleep(4);
+			break;
+		case "UserExperienceDesign":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(experienceDesign);
+			sleep(2);
+			status = clickOnElement(userexperiencedesign);
+			sleep(4);
+			break;
+		case "JourneyMapping":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(experienceDesign);
+			sleep(2);
+			status = clickOnElement(journeymapping);
+			sleep(4);
+			break;
+		case "ABTesting":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(experienceDesign);
+			sleep(2);
+			status = clickOnElement(abtesting);
+			sleep(4);
+			break;
+		case "SearchEngineMarketing":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(digitalMarketing);
+			sleep(2);
+			status = clickOnElement(searchenginemarketing);
+			sleep(4);
+			break;
+		case "SocialMediaMarketing":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(digitalMarketing);
+			sleep(2);
+			status = clickOnElement(socialMediaMarketing);
+			sleep(4);
+			break;
+		case "SentimentTracking":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(digitalMarketing);
+			sleep(2);
+			status = clickOnElement(sentimentTrackinge);
+			sleep(4);
+			break;
+		case "EmailAutomation":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(digitalMarketing);
+			sleep(2);
+			status = clickOnElement(emailautomation);
+			sleep(4);
+			break;
+		case "Prototyping":
+			sleep(4);
+			hoverOverElement(services);
+			sleep(2);
+			hoverOverElement(product);
+			sleep(2);
+			status = clickOnElement(prototyping);
 			sleep(4);
 			break;
 		default:
