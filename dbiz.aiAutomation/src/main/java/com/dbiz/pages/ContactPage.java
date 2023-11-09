@@ -88,13 +88,6 @@ public class ContactPage extends BasePage{
 	                    LOG.error("Contact form header not displayed.");
 	                }
 	                break;
-	                
-	            case "Contact us text":
-	                status = isElementPresent(contactpagecontactustext);
-	                if (!status) {
-	                    LOG.error("Contact form header not displayed.");
-	                }
-	                break;
 
 	            default:
 	                LOG.error("Text not recognized: " + textName);
@@ -205,6 +198,7 @@ public class ContactPage extends BasePage{
 
 		switch (checkBoxName) {
 		case "Mandatorycheckbox":
+			scrollBy(200);
 			sleep(2);
 			status = clickOnElement(contactmecheckbox);
 		sleep(4);

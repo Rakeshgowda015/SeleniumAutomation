@@ -114,11 +114,12 @@ public class BasePage {
 	}
 
 	public void scrollIntoView(String locator) {
-		By by = ObjectLocators.getBySelector(locator);
-		WebElement element = wd.findElement(by);
-		JavascriptExecutor js = (JavascriptExecutor) wd;
-		js.executeScript("arguments[0].scrollIntoView(true);", element);
+	    By by = ObjectLocators.getBySelector(locator);
+	    WebElement element = wd.findElement(by);
+	    JavascriptExecutor js = (JavascriptExecutor) wd;
+	    js.executeScript("arguments[0].scrollIntoView(false);", element);
 	}
+
 
 	public void scrollIntoViewUsingWebElement(WebElement locator) {
 		JavascriptExecutor js = (JavascriptExecutor) wd;
@@ -143,7 +144,42 @@ public class BasePage {
 			return false; // Indicate failure if an exception occurred
 		}
 	}
+	// Method to validate the title of the new tab
+    public boolean validateNewTabTitle(String expectedTitle) {
+        // Get the handles of all open tabs/windows
+        String currentWindowHandle = wd.getWindowHandle();
+        for (String windowHandle : wd.getWindowHandles()) {
+            if (!windowHandle.equals(currentWindowHandle)) {
+                wd.switchTo().window(windowHandle); // Switch to the new tab
+                String actualTitle = wd.getTitle(); // Get the title of the new tab
+                if (actualTitle.contains(expectedTitle)) {
+                    // Title matches, the validation is successful
+                    return true;
+                }
+                wd.close(); // Close the new tab and switch back to the original tab
+                wd.switchTo().window(currentWindowHandle);
+                break;
+            }
+        }
+        // Title didn't match in the new tab
+        return false;
+    }
 
+    public boolean forceClickOnElement(String locator) {
+        try {
+            By by = ObjectLocators.getBySelector(locator);
+            WebElement element = wd.findElement(by);
+
+            Actions actions = new Actions(wd);
+            actions.moveToElement(element).click().perform();
+
+            return true; // Indicate success if the element was clicked
+        } catch (Exception e) {
+            // Handle any exceptions that may occur during the click action
+            LOG.error("Error force-clicking on element with locator: " + locator, e);
+            return false; // Indicate failure if an exception occurred
+        }
+    }
 	protected boolean isElementClickable(String locator) {
 		By by = ObjectLocators.getBySelector(locator);
 		return isElementClickable(by);

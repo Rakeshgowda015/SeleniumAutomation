@@ -12,13 +12,12 @@ import com.dbiz.utils.PropertiesFile;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 
-
 public class Hooks {
 	public static WebDriver driver;
 
 	public static WebDriver setUp() {
-		String browser = PropertiesFile.getProperty("Browser");	
-	
+		String browser = PropertiesFile.getProperty("Browser");
+
 		if (browser.equalsIgnoreCase("Chrome")) {
 			System.setProperty("webdriver.chrome.driver", "../dbiz.aiAutomation/drivers/chromedriver.exe");
 
@@ -27,20 +26,19 @@ public class Hooks {
 			// You can add additional options here if needed
 
 			driver = new ChromeDriver(chromeOptions);
-		}else if (browser.equalsIgnoreCase("Firefox")) {
+		} else if (browser.equalsIgnoreCase("Firefox")) {
 			try {
-		System.setProperty("webdriver.gecko.driver", "../dbiz.aiAutomation/drivers/geckodriver.exe");
+				System.setProperty("webdriver.gecko.driver", "../dbiz.aiAutomation/drivers/geckodriver.exe");
 
-			    // Set up Firefox options (optional)
-			    FirefoxOptions firefoxOptions = new FirefoxOptions();
-			    // You can add additional options here if needed
+				// Set up Firefox options (optional)
+				FirefoxOptions firefoxOptions = new FirefoxOptions();
+				// You can add additional options here if needed
 
-			    driver = new FirefoxDriver(firefoxOptions);
+				driver = new FirefoxDriver(firefoxOptions);
 			} catch (Exception e) {
-			    e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
-		
 
 		// Maximize the browser window
 		driver.manage().window().maximize();
@@ -49,24 +47,22 @@ public class Hooks {
 		return driver;
 	}
 
-
-
-	@After(order =0)
+	@After(order = 0)
 	public void sa() {
 		// Close the WebDriver instance
 		if (driver != null) {
 			driver.quit();
 		}
 	}
-	
-	 @After(order =1)
-	    public static void tearDown(Scenario scenario) {
-	 
-	        //validate if scenario has failed
-	        if(scenario.isFailed()) {
-	            final byte[] screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-	            scenario.attach(screenshot, "image/png", scenario.getName()); 
-	        }   
-	    }
+
+	@After(order = 1)
+	public static void tearDown(Scenario scenario) {
+
+		// validate if scenario has failed
+		if (scenario.isFailed()) {
+			final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+			scenario.attach(screenshot, "image/png", scenario.getName());
+		}
+	}
 
 }

@@ -1,43 +1,15 @@
 Feature: Validating the Homepage
 
-  Scenario: User navigates to the Dbiz.ai Application Homepage
+  Background: User navigates to the Dbiz.ai Application Homepage
     Given I browse the Dbiz.ai url
     Then I should be on "Home" page
     And I validate "HomePage" Header Navigation bar elements
 
-
-  #Scenario: To validate Header in Dbiz.ai Homepage
-    #Then I validate "Bannerheading" in homepage
-   # And I validate "Welcomeblock" in homepage
-
-
-  #Scenario: To validate Industries Section in Dbiz.ai Homepage
-    #Then I validate Industries Section in homepage
-      #| FINTECH            |
-      #| FINANCIAL SERVICES |
-      #| CONSTRUCTION       |
-      #| HEALTH CARE        |
-      #| TELECOMMUNICATION  |
-      #| HEALTH TECH        |
-      #| AUTOMOTIVE         |
-      #| RETAIL             |
-#
-  #
-  #Scenario: To validate Offer Section in Dbiz.ai Homepage
-    #Then I validate Offer Section in homepage
-      #| PRODUCT DEVELOPMENT           |
-      #| PLATFORM                      |
-      #| DATA ARCHITECTURE             |
-      #| CLOUD                         |
-      #| RAPID APPLICATION DEVELOPMENT |
-      #| EXPERIENCE DESIGN             |
-      #| DIGITAL MARKETING             |
-      #| ACCELERATED GROWTH CONSULTING |
-      #| AI                            |
-    #And I validate "Offersection" in homepage
-    #And I validate "JOIN OUR TEAM" in homepage
-
- 
+  Scenario: To validate Explore Opportunities button functionality in Dbiz.ai Homepage
+    When I click on "ExploreOpportunities" button in homepage
+    Then I should be on "ExploreOpportunities" page
+    
+    
   #Scenario: To validate footer Section in Dbiz.ai Homepage
     #And I validate "Get in touch with us" in homepage
     #And I validate "Connect with us" in homepage

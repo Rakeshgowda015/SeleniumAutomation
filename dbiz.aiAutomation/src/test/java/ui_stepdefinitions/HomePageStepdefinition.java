@@ -78,7 +78,7 @@ public class HomePageStepdefinition {
 
 	@When("I click on {string} button in homepage")
 	public void i_click_on_some_button_in_homepage(String buttonName)  {
-		logger.info("I click on '" + buttonName + "' logo in homepage");
+		logger.info("I click on '" + buttonName + "' button in homepage");
 		Assert.assertTrue(homePage.clickOnButton(buttonName));
 	}
 

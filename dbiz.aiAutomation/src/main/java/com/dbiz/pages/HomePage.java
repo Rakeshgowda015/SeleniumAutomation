@@ -84,12 +84,17 @@ public class HomePage extends BasePage {
 	private String twitterlink = webLocators.getPaths("Twitterlink");
 	private String instagramlink = webLocators.getPaths("Instagramlink");
 	private String facebooklink = webLocators.getPaths("Facebooklink");
+	private String rootlinkedinlink = webLocators.getPaths("RootLinkedinlink");
+	private String roottwitterlink = webLocators.getPaths("RootTwitterlink");
+	private String rootinstagramlink = webLocators.getPaths("RootInstagramlink");
+	private String rootfacebooklink = webLocators.getPaths("RootFacebooklink");
 	private String dbizsolutionlink = webLocators.getPaths("Dbizsolutionlink");
 	private String contactformsubmitbutton = webLocators.getPaths("Contactformsubmitbutton");
 	private String contactformdisabledsubmitbutton = webLocators.getPaths("Contactformdisabledsubmitbutton");
 	private String architectureasaService = webLocators.getPaths("ArchitectureasaService");
 	private String infrastructureasaService = webLocators.getPaths("InfrastructureasaService");
 	private String testingasaService = webLocators.getPaths("TestingasaService");
+	private String exploreOpportunitiesbutton = webLocators.getPaths("ExploreOpportunitiesbutton");
 
 	// HomePage Text
 	String fasttracktext = CommonText.homepagefasttrack_Text;
@@ -114,7 +119,6 @@ public class HomePage extends BasePage {
 	public void goToHomePage() {
 		String baseurl = String.format(PropertiesFile.getProperty("BaseURL"), PropertiesFile.getProperty("ENV"));
 		goToUrl(baseurl);
-		sleep(5);
 		LOG.info("Navigated to URL: " + baseurl); // Log URL navigation
 	}
 
@@ -148,20 +152,36 @@ public class HomePage extends BasePage {
 		case "ABTesting":
 		case "SearchEngineMarketing":
 		case "SocialMediaMarketing":
-		case "SentimentTrackinge":
+		case "SentimentTracking":
 		case "EmailAutomation":
 		case "Prototyping":
-			sleep(4);
+			sleep(3);
 			String PageTitle = PropertiesFile.getProperty(Page + "PageTitle");
+			sleep(2);
 			status = getWindowTitle().equals(PageTitle);
 			if (!status) {
 				LOG.error("Page title validation failed. Expected: " + PageTitle + ", Actual: " + getWindowTitle());
 			}
 			break;
+			
+			
+			
+		case "ExploreOpportunities":
+			sleep(3);
+			String ExploreOpportunitiesPageTitle = PropertiesFile.getProperty(Page + "PageTitle");
+			sleep(2);
+			status = validateNewTabTitle(ExploreOpportunitiesPageTitle);
+			if (!status) {
+				LOG.error("Page title validation failed. Expected: " + ExploreOpportunitiesPageTitle + ", Actual: " + getWindowTitle());
+			}
+			break;
+			
+			
 		case "(20) DBiz.ai: Overview | LinkedIn":
 		case "Log in to Twitter / X":
 		case "www.instagram.com":
 		case "DBiz Solutions | Facebook":
+			sleep(2);
 			String title = PropertiesFile.getProperty("ContactPageTitle");
 			status = getWindowTitle().equals(title);
 			if (!status) {
@@ -183,7 +203,6 @@ public class HomePage extends BasePage {
 		try {
 			switch (pageName) {
 			case "HomePage":
-				scrollIntoView(about);
 				status = isElementPresent(about) && isElementPresent(services) && isElementPresent(contact);
 
 //						&& isElementPresent(insights) && isElementPresent(careers) 
@@ -308,14 +327,13 @@ public class HomePage extends BasePage {
 			sleep(2);
 			break;
 		case "Contact":
-			scrollIntoView(contactbutton);
 			sleep(4);
 			status = clickOnElement(contactbutton);
 			sleep(2);
 			break;
 		case "submit":
-			scrollIntoView(contactformsubmitbutton);
-			sleep(5);
+			scrollBy(100);
+			sleep(2);
 			status = clickOnElement(contactformsubmitbutton);
 			sleep(1);
 			break;
@@ -323,6 +341,13 @@ public class HomePage extends BasePage {
 			scrollIntoView(contactformsubmitbutton);
 			sleep(3);
 			status = isElementPresent(contactformdisabledsubmitbutton);
+			sleep(2);
+			break;
+		case "ExploreOpportunities":
+			sleep(4);
+			scrollIntoView(outsystemslink);
+			sleep(5);
+			status = forceClickOnElement(exploreOpportunitiesbutton);
 			sleep(2);
 			break;
 		default:
@@ -338,42 +363,56 @@ public class HomePage extends BasePage {
 
 		switch (linkName) {
 		case "Linkedin":
-			sleep(4);
-			scrollIntoView(linkedinlink);
+			scrollBy(500);
+			sleep(2);
 			status = clickOnElement(linkedinlink);
-			sleep(3);
 			break;
 		case "Twitter":
-			sleep(4);
-			scrollIntoView(twitterlink);
+			scrollBy(500);
+			sleep(2);
 			status = clickOnElement(twitterlink);
-			sleep(4);
 			break;
-		case "Instagram":
-			sleep(4);
-			scrollIntoView(instagramlink);
+		case "Instagram":	
+			scrollBy(500);
+			sleep(2);
 			status = clickOnElement(instagramlink);
-			sleep(3);
 			break;
-		case "Facebook":
-			sleep(4);
-			scrollIntoView(facebooklink);
+		case "Facebook":	
+			scrollBy(500);
+			sleep(2);
 			status = clickOnElement(facebooklink);
-			sleep(4);
+			break;
+		case "RootLinkedin":
+			scrollBy(500);
+			sleep(2);
+			status = clickOnElement(rootlinkedinlink);
+			break;
+		case "RootTwitter":
+			scrollBy(500);
+			sleep(2);
+			status = clickOnElement(roottwitterlink);
+			break;
+		case "RootInstagram":	
+			scrollBy(500);
+			sleep(2);
+			status = clickOnElement(rootinstagramlink);
+			break;
+		case "RootFacebook":	
+			scrollBy(500);
+			sleep(2);
+			status = clickOnElement(rootfacebooklink);
 			break;
 		case "Mail":
-			sleep(3);
-			scrollIntoView(dbizsolutionlink);
+			scrollBy(500);
+			sleep(2);
 			status = isElementClickable(dbizsolutionlink);
-			sleep(3);
 			break;
 		case "Contact":
-			sleep(4);
+			sleep(2);
 			status = clickOnElement(contact);
-			sleep(4);
 			break;
 		case "About":
-			sleep(4);
+			sleep(2);
 			status = clickOnElement(about);
 			sleep(4);
 			break;
